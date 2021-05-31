@@ -19,12 +19,15 @@ router.route('/seats').post((req, res) => {
     client,
     email
   }
-  
+
   if (db.seats.filter(data => (data.day == newSeat.day && data.seat == newSeat.seat)).length > 0) {
     res.json({ message: "The slot is already taken..." })
   } else {
     db.seats.push(newSeat);
+    req.io.emit('seatsUpdated', db.seats);
+
     res.json({ message: 'OK' });
+
   }
 });
 

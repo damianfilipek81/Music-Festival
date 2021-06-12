@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap';
 
 import './Concert.scss';
 
-const Concert = ({ performer, price, genre, day, image, tickets }) => {
+const Concert = ({ performer, price, genre, day, image, freeTickets }) => {
 
   return (
     <article className="concert">
@@ -19,7 +19,7 @@ const Concert = ({ performer, price, genre, day, image, tickets }) => {
             <h2 className="concert__info__performer">{performer}</h2>
             <h3 className="concert__info__genre">{genre}</h3>
             <p className="concert__info__day-n-price">Day: {day}, Price: {price}$</p>
-            <p className="concert__info__tickets">{`Only ${tickets} tickets left!`}</p>
+            <p className="concert__info__tickets">{`Only ${freeTickets} tickets left!`}</p>
           </div>
         </Col>
       </Row>

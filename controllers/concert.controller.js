@@ -6,13 +6,13 @@ exports.getAll = async (req, res) => {
     const concert = await Concert.find();
     const seats = await Seat.find();
 
-    const concerts = [];
-    concert.map(data => {
+    const concerts = concert.map(data => {
       const tickets = seats.filter(seat => seat.day === data.day);
       const freeTickets = 50 - tickets.length;
-      const output = { tickets: freeTickets, concert: data };
 
-      concerts.push(output);
+      const { _id, genre, performer, day, price, image } = data;
+      const output = { freeTickets, _id, genre, performer, day, price, image }
+      return output;
     })
     res.json(concerts);
   }

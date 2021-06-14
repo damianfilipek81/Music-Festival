@@ -5,11 +5,13 @@ const path = require('path');
 const socket = require('socket.io');
 const mongoose = require('mongoose');
 require('dotenv').config()
+const helmet = require('helmet');
 
 const testimonialsRoutes = require('./routes/testimonials.routes.js');
 const concertsRoutes = require('./routes/concerts.routes.js');
 const seatsRoutes = require('./routes/seats.routes.js');
 
+app.use(helmet());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use(cors());
